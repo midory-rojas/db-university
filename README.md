@@ -14,3 +14,5 @@ Il modello concettuale è stato definito a partire dai seguenti requisiti funzio
 
 Sulla base di tali requisiti, sono state individuate le entità fondamentali del sistema e definite le relative **relazioni**, con particolare attenzione alla gestione delle relazioni **molti-a-molti** mediante tabelle di associazione.  
 Le scelte progettuali adottate garantiscono la **normalizzazione dei dati** e l’**integrità referenziale** del database.
+
+
