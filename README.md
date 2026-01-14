@@ -15,7 +15,7 @@ Il modello concettuale è stato definito a partire dai seguenti requisiti funzio
 Sulla base di tali requisiti, sono state individuate le entità fondamentali del sistema e definite le relative **relazioni**, con particolare attenzione alla gestione delle relazioni **molti-a-molti** mediante tabelle di associazione.  
 Le scelte progettuali adottate garantiscono la **normalizzazione dei dati** e l’**integrità referenziale** del database.
 
-## 🔍 Query SQL Select ed Analisi Dati
+## 🔍 Query di Selezione e Filtro
 
 ### 🛠️ Strumenti e Tecnologie
 
@@ -30,4 +30,24 @@ Le scelte progettuali adottate garantiscono la **normalizzazione dei dati** e l�
 6. **Corsi di Laurea Magistrale**: Identificazione di tutti i corsi di studio di livello "magistrale" (38 risultati).
 7. **Conteggio Dipartimenti**: Analisi della struttura universitaria composta da un totale di 12 dipartimenti.
 8. **Insegnanti senza telefono**: Controllo sulla qualità dei dati tramite `IS NULL` per rintracciare i 50 docenti che non hanno un numero di telefono.
+
+## 📊 Query di Raggruppamento (GROUP BY)
+
+Le query di aggregazione sono state utilizzate per generare statistiche sintetiche sui dati accademici.
+
+| Obiettivo | Funzione SQL | Raggruppamento |
+| :--- | :--- | :--- |
+| **Iscritti per anno** | `COUNT(*)` | `YEAR(enrolment_date)` |
+| **Docenti per ufficio** | `COUNT(*)` | `office_address` |
+| **Media voti per esame** | `AVG(vote)` | `exam_id` |
+| **Corsi per dipartimento** | `COUNT(*)` | `department_id` |
+
+### Dettagli Tecnici:
+1. **Iscritti per anno**: Conteggio degli studenti basato sull'anno di immatricolazione, ordinato cronologicamente.
+2. **Insegnanti nello stesso edificio**: Identificazione della distribuzione dei docenti negli uffici.
+3. **Media Voti**: Calcolo della performance media per ogni appello d'esame (tabella `exam_student`).
+4. **Dipartimenti**: Conteggio dei corsi di laurea per dipartimento, ordinati dal più grande al più piccolo (`DESC`).
+
+
+
 
