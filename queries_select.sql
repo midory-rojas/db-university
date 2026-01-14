@@ -29,7 +29,7 @@ WHERE `period` = "I semestre" AND YEAR = 1;
 
 SELECT COUNT(*)
 FROM `exams`
-WHERE `hour`>= "14:00:00"
+WHERE `hour` > "14:00:00"
 AND `date`= "2020-06-20" 
 
 --6 Selezionare tutti i corsi di laurea magistrale (38)
