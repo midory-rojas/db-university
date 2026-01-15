@@ -1,13 +1,13 @@
 --1 Selezionare tutti gli studenti nati nel 1990 (160)
 
-SELECT COUNT(*)
+SELECT *
 FROM `students`
 WHERE `date_of_birth` BETWEEN "1990-01-01" AND "1990-12-31"
 ORDER BY `date_of_birth` ASC;
 
 --2 Selezionare tutti i corsi che valgono più di 10 crediti (479)
 
-SELECT COUNT(*)
+SELECT *
 FROM `courses`
 WHERE `cfu`> 10;
 
@@ -20,21 +20,22 @@ WHERE TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30;
 
 --4 Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 
-SELECT COUNT(*)
+SELECT *
 FROM `courses`
-WHERE `period` = "I semestre" AND YEAR = 1;
+WHERE `period` = "I semestre" 
+AND `and` = 1;
 
 
 --5 Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
 
-SELECT COUNT(*)
+SELECT *
 FROM `exams`
 WHERE `hour` > "14:00:00"
 AND `date`= "2020-06-20" 
 
 --6 Selezionare tutti i corsi di laurea magistrale (38)
 
-SELECT COUNT(*) AS "TOTALE_CORSI_MAGISTRALE"
+SELECT * AS "TOTALE_CORSI_MAGISTRALE"
 FROM `degrees`
 WHERE `level`= "magistrale"
 
