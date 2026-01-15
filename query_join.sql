@@ -11,16 +11,24 @@ ORDER BY `name`ASC
 
 --2 Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 
-SELECT `courses`.*, `degrees`.`level`, `departments`.`name`
-FROM `courses`
-INNER JOIN `degrees`
-ON `degrees`.`id`= `courses`.`degree_id`
+SELECT `degrees`.*, `departments`.name 
+FROM `degrees`
 INNER JOIN `departments`
-ON `departments`.`id`= `degrees`.`department_id`
-WHERE `departments`.`name` = "Dipartimento di Neuroscienze"
-AND `degrees`.`level` = "magistrale"
+ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.name = "Dipartimento di Neuroscienze"
+AND `degrees`.level = "magistrale";
 
 --3 Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+
+SELECT `teachers`.*, `courses`.name
+FROM `teachers`
+INNER JOIN `course_teacher`
+ON `teachers`. `id`= `course_teacher`.`teacher_id`
+INNER JOIN `courses`
+ON `courses`.`id` = `course_teacher`.`course_id`
+WHERE `teachers`.`id`= 44
+
+
 --4 Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e ilrelativo dipartimento, in ordine alfabetico per cognome e nome
 --5 Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 --6 Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
