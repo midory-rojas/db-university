@@ -48,6 +48,28 @@ Le query di aggregazione sono state utilizzate per generare statistiche sintetic
 3. **Media Voti**: Calcolo della performance media per ogni appello d'esame (tabella `exam_student`).
 4. **Dipartimenti**: Conteggio dei corsi di laurea per dipartimento, ordinati dal più grande al più piccolo (`DESC`).
 
+## 🔗 Query con JOIN
+
+In questa sezione sono state utilizzate le JOIN per mettere in relazione diverse tabelle del database (studenti, corsi, dipartimenti e insegnanti) al fine di estrarre informazioni complesse.
+
+| Obiettivo | Tabelle Coinvolte | Condizione Principale |
+| :--- | :--- | :--- |
+| **Studenti di Economia** | `students`, `degrees` | `degrees.name = "Economia"` |
+| **Magistrali Neuroscienze** | `degrees`, `departments` | `dept.name = "Neuroscienze"` |
+| **Corsi di un docente** | `teachers`, `course_teacher`, `courses` | `teacher_id = 44` |
+| **Dettaglio Studenti** | `students`, `degrees`, `departments` | Relazione completa |
+| **Corsi e Insegnanti** | `degrees`, `courses`, `teachers` | Relazione N:N |
+| **Docenti Matematica** | `teachers`, `courses`, `degrees`, `dept` | `dept.name = "Matematica"` |
+
+### ### Dettagli Tecnici:
+
+1. **Studenti di Economia**: Recupero della lista studenti filtrata per il nome specifico del corso di laurea.
+2. **Magistrali Neuroscienze**: Selezione dei corsi filtrando sia per il dipartimento che per il livello del corso ("magistrale").
+3. **Corsi di Fulvio Amato**: Utilizzo di una tabella pivot (`course_teacher`) per collegare i docenti ai loro rispettivi corsi.
+4. **Dettaglio Studenti**: Una tripla JOIN per ottenere una panoramica completa: Studente -> Corso di Laurea -> Dipartimento.
+5. **Corsi e Insegnanti**: Mappatura completa che associa ogni corso di laurea ai singoli insegnamenti e ai relativi docenti responsabili.
+6. **Docenti Matematica**: Query complessa con JOIN multiple e clausola `DISTINCT` per evitare duplicati nel caso un docente tenga più corsi nello stesso dipartimento.
+
 
 
 
